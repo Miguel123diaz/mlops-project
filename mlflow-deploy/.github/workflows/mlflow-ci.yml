@@ -1,0 +1,38 @@
+name: MLflow CI/CD
+
+on:
+	push:
+		branches:
+			- main
+
+jobs:
+	build:
+		runs-on: ubuntu-latest
+
+		steps:
+			- name: Checkout repository
+				uses: actions/checkout@v4
+
+			- name: Set up Python
+				uses: actions/setup-python@v5
+				with:
+					python-version: '3.10'
+
+			- name: Install dependencies
+				run: |
+					python -m pip install --upgrade pip
+					pip install -r mlflow-deploy/requirements.txt
+
+			- name: Train model
+				run: |
+					python mlflow-deploy/train.py
+
+			- name: Validate model
+				run: |
+					python mlflow-deploy/validate-1.py
+
+			- name: Upload MLflow artifacts
+				uses: actions/upload-artifact@v4
+				with:
+					name: mlflow-artifacts
+					path: mlflow-deploy/mlruns/
