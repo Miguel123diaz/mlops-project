@@ -1,36 +1,39 @@
 name: Continuous Deployment
 
 on:
-  workflow_run:
-    workflows: ["Continuous Integration"]
-    types:
-      - completed
-  workflow_dispatch:
-  pull_request:
-    branches: [main]
+	workflow_run:
+		workflows: ["Continuous Integration"]
+		types:
+			- completed
+	workflow_dispatch:
+	pull_request:
+		branches: [main]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+	build:
+		runs-on: ubuntu-latest
+		steps:
+			- uses: actions/checkout@v4
 
-      - name: Install Packages
-        run: make install
+			- name: Setup CML
+				uses: iterative/setup-cml@v2
 
-      - name: Format Code
-        run: make format
+			- name: Install Packages
+				run: make install
 
-      - name: Train Model
-        run: make train
+			- name: Format Code
+				run: make format
 
-      - name: Evaluate Model
-        run: make eval
+			- name: Train Model
+				run: make train
 
-      - name: Hugging Face Login
-        env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: make hf-login
+			- name: Evaluate Model
+				run: make eval
 
-      - name: Deploy to Hugging Face
-        run: make push-hub
+			- name: Hugging Face Login
+				env:
+					HF_TOKEN: ${{ secrets.HF_TOKEN }}
+				run: make hf-login
+
+			- name: Deploy to Hugging Face
+				run: make push-hub
