@@ -1,3 +1,5 @@
+name: Continuous Deployment
+
 jobs:
 	build:
 		runs-on: ubuntu-latest
