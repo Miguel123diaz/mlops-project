@@ -32,7 +32,7 @@ jobs:
 					python mlflow-deploy/validate-1.py
 
 			- name: Upload MLflow artifacts
-				uses: actions/upload-artifact@v4
+				uses: actions/upload-artifact@v3
 				with:
 					name: mlflow-artifacts
 					path: mlflow-deploy/mlruns/
