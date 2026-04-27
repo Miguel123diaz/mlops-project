@@ -1,0 +1,10 @@
+artifact_location: file:C:/Users/Lenovo/Documents/mlops-project/mlflow-deploy/mlruns/605052520771924980/models/m-b52af58287184756a432dc7db2ca78a0/artifacts
+creation_timestamp: 1777331877755
+experiment_id: '605052520771924980'
+last_updated_timestamp: 1777331883489
+model_id: m-b52af58287184756a432dc7db2ca78a0
+model_type: null
+name: model
+source_run_id: e437f3f2ac354a6c92725c6463eb4681
+status: 2
+status_message: null

@@ -1,0 +1,8 @@
+artifact_location: file:C:/Users/Lenovo/Documents/mlops-project/mlflow-deploy/mlruns/605052520771924980
+creation_time: 1777331877361
+experiment_id: '605052520771924980'
+last_update_time: 1777331877361
+lifecycle_stage: active
+name: drug-classification
+trace_location: null
+workspace: default

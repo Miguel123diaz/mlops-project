@@ -1,0 +1,14 @@
+artifact_uri: file:C:/Users/Lenovo/Documents/mlops-project/mlflow-deploy/mlruns/605052520771924980/007d78bea0b24f7fb9c4a1cc9b82bab2/artifacts
+end_time: 1777331888564
+entry_point_name: ''
+experiment_id: '605052520771924980'
+lifecycle_stage: active
+run_id: 007d78bea0b24f7fb9c4a1cc9b82bab2
+run_name: validation
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1777331888513
+status: 4
+tags: []
+user_id: Lenovo
