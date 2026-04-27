@@ -1,4 +1,5 @@
 name: Continuous Deployment
+
 on:
   workflow_run:
     workflows: ["Continuous Integration"]
@@ -11,7 +12,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Deployment To Hugging Face
+
+      - name: Install Packages
+        run: make install
+
+      - name: Hugging Face Login
         env:
-          HF: ${{ secrets.HF }}
-        run: make deploy HF=$HF
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: make hf-login
+
+      - name: Deploy to Hugging Face
+        run: make push-hub
