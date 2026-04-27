@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import skops.io as sio
 from sklearn.compose import ColumnTransformer
@@ -21,10 +22,9 @@ X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.3, random_state=125
 )
 
-
 ## Pipeline
-cat_col = [1,2,3]
-num_col = [0,4]
+cat_col = [1, 2, 3]
+num_col = [0, 4]
 
 transform = ColumnTransformer(
     [
@@ -43,14 +43,12 @@ pipe = Pipeline(
 ## Training
 pipe.fit(X_train, y_train)
 
-
 ## Model Evaluation
 predictions = pipe.predict(X_test)
 accuracy = accuracy_score(y_test, predictions)
 f1 = f1_score(y_test, predictions, average="macro")
 
 print("Accuracy:", str(round(accuracy, 2) * 100) + "%", "F1:", round(f1, 2))
-
 
 ## Confusion Matrix Plot
 import matplotlib.pyplot as plt
@@ -60,6 +58,11 @@ predictions = pipe.predict(X_test)
 cm = confusion_matrix(y_test, predictions, labels=pipe.classes_)
 disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=pipe.classes_)
 disp.plot()
+
+# 🔹 Asegurar que las carpetas existan ANTES de guardar
+os.makedirs("Results", exist_ok=True)
+os.makedirs("Model", exist_ok=True)
+
 plt.savefig("./Results/model_results.png", dpi=120)
 
 ## Write metrics to file
