@@ -1,14 +1,3 @@
-name: Continuous Deployment
-
-on:
-	workflow_run:
-		workflows: ["Continuous Integration"]
-		types:
-			- completed
-	workflow_dispatch:
-	pull_request:
-		branches: [main]
-
 jobs:
 	build:
 		runs-on: ubuntu-latest
@@ -29,6 +18,12 @@ jobs:
 
 			- name: Evaluate Model
 				run: make eval
+
+			- name: Upload Report
+				uses: actions/upload-artifact@v4
+				with:
+					name: model-report
+					path: report.md
 
 			- name: Hugging Face Login
 				env:
