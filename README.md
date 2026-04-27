@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # CICD-for-Machine-Learning
 [![CI](https://github.com/kingabzpro/CICD-for-Machine-Learning/actions/workflows/ci.yml/badge.svg)](https://github.com/kingabzpro/CICD-for-Machine-Learning/actions/workflows/ci.yml)
 [![Continuous Deployment](https://github.com/kingabzpro/CICD-for-Machine-Learning/actions/workflows/cd.yml/badge.svg)](https://github.com/kingabzpro/CICD-for-Machine-Learning/actions/workflows/cd.yml)
@@ -25,3 +26,7 @@ From training to evaluation, the entire process will be automated using GitHub a
 | RandomForestClassifier | 97.0%    | 94.0%    |
 
 ![CM](./Results/model_results.png)
+=======
+# mlops-project
+En esta guía, aprenderás a crear un pipeline CI/CD completo para un proyecto de ML, automatizando.
+>>>>>>> d34267da03833f5fd2391d56fe67a4c7b12a1f61
