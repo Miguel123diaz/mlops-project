@@ -12,6 +12,7 @@ from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 from sklearn.metrics import ConfusionMatrixDisplay, confusion_matrix
 import os
+import joblib
 
 # Crear carpetas de resultados si no existen
 os.makedirs("./Results", exist_ok=True)
@@ -52,7 +53,7 @@ pipe = Pipeline(
 )
 
 ## MLflow Run
-with mlflow.start_run():
+with mlflow.start_run(run_name="training"):
     # Training
     pipe.fit(X_train, y_train)
 
@@ -90,3 +91,7 @@ with mlflow.start_run():
     ## Saving the model file locally
     sio.dump(pipe, "./Model/drug_pipeline.skops")
     mlflow.log_artifact("./Model/drug_pipeline.skops")
+
+    # Guardar también como model.pkl para validación
+    joblib.dump(pipe, "model.pkl")
+    mlflow.log_artifact("model.pkl")
